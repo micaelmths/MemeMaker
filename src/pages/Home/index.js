@@ -35,7 +35,7 @@ function Home() {
     const params = qs.stringify({
       template_id: selectedTemplate.id,
       username: 'micaelmths',
-      password: 'Hnk!2033',
+      password: '123456',
       boxes: boxes.map(text => ({text}))
 
     });
