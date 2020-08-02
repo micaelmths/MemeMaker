@@ -31,18 +31,22 @@ function Home() {
 
   async function handleSubmit(e){
     e.preventDefault();
-
-    const params = qs.stringify({
-      template_id: selectedTemplate.id,
-      username: 'micaelmths',
-      password: '123456',
-      boxes: boxes.map(text => ({text}))
-
-    });
-    const resp = await fetch(`https://api.imgflip.com/caption_image?${params}`)
-    const {data: {url}} = await resp.json();
-
-    setGeneretedMeme(url)
+    try {
+      const params = qs.stringify({
+        template_id: selectedTemplate.id,
+        username: 'micaelmths',
+        password: '123456',
+        boxes: boxes.map(text => ({text}))
+  
+      });
+      const resp = await fetch(`https://api.imgflip.com/caption_image?${params}`)
+      const {data: {url}} = await resp.json();
+  
+      setGeneretedMeme(url)
+      
+    } catch (error) {
+      alert('Erro ao gerar seu Meme, tente novamente!')
+    }
 
   }
 
